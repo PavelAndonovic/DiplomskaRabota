@@ -1,8 +1,6 @@
 import json
 import os
 
-from time import time
-
 from dotenv import load_dotenv
 
 import table_evaluator_llama
@@ -12,11 +10,11 @@ from common.prompts import PROMPT_QUERY_GENERATOR
 from common.question import QUESTION
 import logging
 
+from common.result_naming import generate_new_name
 from config import (
     OUTPUT_PATH,
     OUTPUT_DATA_FILE_TYPE,
     RESULTS_PATH,
-    RESULTS_DATA_FILE_TYPE
 )
 
 from common.utils import mkdir_if_not_exist
@@ -53,7 +51,7 @@ def save_results(question, llama_evaluated_tables, answer):
         'query': answer
     }
     mkdir_if_not_exist(RESULTS_PATH)
-    with open(os.sep.join([RESULTS_PATH, f"{time()}{RESULTS_DATA_FILE_TYPE}"]), 'w') as f:
+    with open(generate_new_name(), 'w') as f:
         f.write(json.dumps(result))
 
 

@@ -1,1 +1,1 @@
-QUESTION = """Show the top 3 professors with the most classes sorted by number of classes"""
+QUESTION = """Show me how many different cars are made in each country."""

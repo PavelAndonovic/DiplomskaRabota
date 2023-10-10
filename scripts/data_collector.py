@@ -1,3 +1,4 @@
+import os
 import sqlite3
 
 import pandas as pd
@@ -30,7 +31,7 @@ def save_table_data(table_name, cursor, row_limit=50):
     record = cursor.fetchall()
     data = pd.DataFrame(columns=column_names, data=record)
     mkdir_if_not_exist(INPUT_PATH)
-    data.to_csv(f"{INPUT_PATH}/{table_name}{INPUT_DATA_FILE_TYPE}", index=False)
+    data.to_csv(os.sep.join([INPUT_PATH, f"{table_name}{INPUT_DATA_FILE_TYPE}"]), index=False)
 
 
 def main():
