@@ -8,6 +8,7 @@ import openai
 import data_collector
 import table_explainer
 import query_generator
+import causal_reasoner
 
 from common.question import QUESTION
 from common.result_naming import find_latest_result
@@ -42,5 +43,7 @@ if __name__ == '__main__':
 
     with open(find_latest_result()) as f:
         result = json.load(f)
+
+    causal_reasoner.main()
 
     print(result['query'])

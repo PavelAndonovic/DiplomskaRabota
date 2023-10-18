@@ -1,1 +1,1 @@
-QUESTION = """Show me how many different cars are made in each country."""
+QUESTION = """What are the ids of all female students who play football?"""

@@ -9,7 +9,7 @@ def read_api_key():
     load_dotenv()
     return os.getenv("OPENAI_API_KEY")
 
-DATABASE_NAME = 'car_1'
+DATABASE_NAME = 'game_1'
 
 DB_PATH = os.sep.join(["..", "data", "spider", "database", DATABASE_NAME, f"{DATABASE_NAME}.sqlite"])
 
@@ -22,4 +22,4 @@ INPUT_DATA_FILE_TYPE = FileType.CSV.value
 OUTPUT_DATA_FILE_TYPE = FileType.JSON.value
 RESULTS_DATA_FILE_TYPE = FileType.JSON.value
 
-SIMILARITY_TOP_K_VALUE = 4
+SIMILARITY_TOP_K_VALUE = 10

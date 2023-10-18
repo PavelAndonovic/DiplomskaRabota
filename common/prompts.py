@@ -42,6 +42,15 @@ different tables. The keys of the dictionaries represent column names and the va
 *** DO NOT MIX COLUMNS FROM DIFFERENT TABLES WITHOUT JOINING THEM.***
 *** ONLY USE COLUMNS OF SAME DATA TYPES WHEN JOINING TWO TABLES. ***
 *** IF TWO OR MORE TABLES NEED TO BE USED, BUT DON'T HAVE A DIRECT WAY TO JOIN, USE ANOTHER TABLE THAT CONAINS KEYS TO BOTH OF THEM AND JOIN ALL OF THEM. ***
+*** DO NOT JOIN COLUMNS THAT HAVE DIFFERENT EXPLANATIONS FOR THEM. ***
+*** IF YOU NEED TO COMPARE A COLUMN VALUE WITH A STRING, MAKE THE COLUMN VALUE lower() AND THE STRING VALUE lower(), TO MAKE SURE THEY HAVE THE SAME CAPITALIZATION ***
+
+-> Example
+
+WHERE lower(a.Name) = lower('Steve')
+and a.isStudent = True
+
+-> End of example
 
 Use the following example to generate the required result:
 
@@ -130,6 +139,8 @@ TABLE_CREATING_SYSTEM_PROMPT = """You are tasked with explaining the columns and
     row data in the given table. Give the results in a dictionary format, where for every key (column name) there is
     a value (explanation of column), followed by the data type of the values in SQL. If a column has numeric values
     aside from 1 and 0, do not explain it as boolean.
+    
+    *** IF AN ID IS PRESENT, ALWAYS EXPLAIN WHAT THE ID IS FOR, USING YOUR BEST GUESS. ***
 
     -> Example:
     {
