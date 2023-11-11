@@ -9,7 +9,7 @@ def read_api_key():
     load_dotenv()
     return os.getenv("OPENAI_API_KEY")
 
-DATABASE_NAME = 'game_1'
+DATABASE_NAME = 'tracking_grants_for_research'
 
 DB_PATH = os.sep.join(["..", "data", "spider", "database", DATABASE_NAME, f"{DATABASE_NAME}.sqlite"])
 

@@ -1,1 +1,1 @@
-QUESTION = """What are the ids of all female students who play football?"""
+QUESTION = """From what date and to what date do the staff work on a project that has the most staff and has staff in a leader role?"""

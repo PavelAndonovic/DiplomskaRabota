@@ -116,6 +116,7 @@ If there are columns in this table that are not at all related to the demand, do
 
 *** OUTPUT AN SQL QUERY AS A RESULT AND NOTHING ELSE, DO NOT ATTEMPT TO GENERATE A RESULT USING ANY OTHER TOOL OR LANGUAGE ***
 *** DO NOT CHANGE THE NAME OF ANY OF THE PROVIDED COLUMNS OR TABLES ***
+*** MAKE SURE TO  ONLY USE COLUMNS AS A PART OF THE TABLE THAT THEY ARE PRESENTED AS, AND NOT OTHER TABLES IF THEY ARE NOT PRESENT ***
 
 The query should use only the following tables, containing explanations of the column meanings:
 
@@ -164,7 +165,9 @@ TABLE_CREATING_USER_PROMPT = """
     {sample}"""
 
 CAUSAL_REASONING_SYSTEM_PROMPT = """
-You are a software engineer. Your job is to give causal reasoning to the query you wrote.
+You are a software engineer. Your job is to explain the process for you to arrive to an SQL query based on the question
+given and tables and columns provided. Your reasoning should contain the steps that it took to arrive to the query,
+including why you need to use certain tables and columns.
 """
 
 CAUSAL_REASONING_USER_PROMPT = """
@@ -173,6 +176,12 @@ The query you generated was the following:
 
 ->
 {query}
+->
+
+You were given the following tables:
+
+->
+{tables}
 ->
 
 Please explain how you arrived to that query.

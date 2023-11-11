@@ -16,12 +16,13 @@ def main():
         result = json.load(f)
     resulting_query = result['query']
     question = result['question']
+    tables = result['llama_index_output']
 
     answer = openai.ChatCompletion.create(
         model='gpt-3.5-turbo',
         messages=[{"role": "system", "content": CAUSAL_REASONING_SYSTEM_PROMPT},
                   {"role": "user",
-                   "content": CAUSAL_REASONING_USER_PROMPT.format(problem=question, query=resulting_query)}],
+                   "content": CAUSAL_REASONING_USER_PROMPT.format(problem=question, query=resulting_query, tables=tables)}],
         temperature=0
     )['choices'][0].message.content
 
